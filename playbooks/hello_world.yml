@@ -1,6 +1,7 @@
 - name: hello
   hosts: all
   tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+    - debug:
+        msg: "you have send the following message:"
+    - debug:
+        var: event.message
