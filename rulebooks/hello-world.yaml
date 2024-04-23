@@ -8,5 +8,5 @@
     - name: Say Hello
       condition: event.i == 1
       action:
-        run_playbook:
-          name: ajarrett.eda.hello
+        run_job_template:
+          name: EDA Hello World
