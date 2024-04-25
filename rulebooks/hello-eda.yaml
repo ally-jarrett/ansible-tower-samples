@@ -15,10 +15,10 @@
       condition: event.message != ""
       action:
         run_job_template:
-          name: hello-eda.yml
+          name: EDA Hello World
     - name: webhook
       condition: event.payload.message != ""
       action:
         run_job_template:
-          name: hello-eda.yml
+          name: EDA Hello World
           var_root: payload
