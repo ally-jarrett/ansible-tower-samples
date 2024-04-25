@@ -12,14 +12,18 @@
         port: 5000
   rules:
     - name: kafka
-      condition: event.message != ""
+      condition: event != ""
       action:
+        print_event:
+          pretty: true
         run_job_template:
           name: EDA Hello World
           organization: Default
     - name: webhook
       condition: event.payload.message != ""
       action:
+        print_event:
+          pretty: true
         run_job_template:
           name: EDA Hello World
           var_root: payload
