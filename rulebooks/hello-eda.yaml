@@ -14,11 +14,11 @@
     - name: kafka
       condition: event.message != ""
       action:
-        run_playbook:
+        run_job_template:
           name: hello-eda.yml
     - name: webhook
       condition: event.payload.message != ""
       action:
-        run_playbook:
+        run_job_template:
           name: hello-eda.yml
           var_root: payload
