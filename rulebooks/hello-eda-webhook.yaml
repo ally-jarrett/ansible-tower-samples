@@ -1,0 +1,15 @@
+---
+- name: Hello Webhook Event
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+  rules:
+    - name: webhook
+      condition: event.payload.message != ""
+      action:
+        run_job_template:
+          name: EDA Hello World
+          var_root: payload
+          organization: Default
