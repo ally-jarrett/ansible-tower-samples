@@ -9,7 +9,7 @@
         group_id: ansible-eda
   rules:
     - name: kafka
-      condition: event.trigger == true
+      condition: event != null
       action:
         debug: 
           var: event
