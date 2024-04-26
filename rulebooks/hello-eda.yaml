@@ -14,8 +14,8 @@
     - name: kafka
       condition: event.message != ""
       action:
-        print_event:
-          pretty: true
+        debug: 
+          var: event
         run_job_template:
           name: EDA Hello World
           organization: Default
