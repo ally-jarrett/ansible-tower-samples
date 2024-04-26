@@ -12,7 +12,7 @@
         port: 5000
   rules:
     - name: kafka
-      condition: event.message != ""
+      condition: event.message is defined 
       action:
         debug: 
           var: event
