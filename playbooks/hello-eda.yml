@@ -1,5 +1,6 @@
 - name: hello
   hosts: all
   tasks:
-    - debug:
-        msg: "you have send the following message: {{ansible_eda.event.message}}"
+    - name: Print Vars
+      debug:
+        msg: "you have send the following event: '{{event}}'"
