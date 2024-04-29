@@ -4,4 +4,4 @@
     - debug:
         msg: "you have send the following message: "
     - debug:
-        var: event
+        var: ansible_eda.event
