@@ -4,4 +4,4 @@
   tasks:
     - name: Print Vars
       debug:
-        msg: "you have send the following event: '{{message}}'"
+        msg: "you have send the following event: '{{ansible_eda.event.message}}'"
