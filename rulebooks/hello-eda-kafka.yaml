@@ -13,6 +13,6 @@
       action:
         debug: 
           var: event.body.message
-        # run_job_template:
-        #   name: EDA Hello World
-        #   organization: Default
+        run_job_template:
+          name: EDA Hello World
+          organization: Default
