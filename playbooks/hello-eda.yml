@@ -1,7 +1,13 @@
-- name: hello
-  hosts: localhost
+---
+- name: Debug Hello event and facts
+  hosts: all
   gather_facts: false
   tasks:
-    - name: Print Vars
-      debug:
-        msg: "you have send the following event: '{{ ansible_eda.event.message }}'"
+    - name: Debug Hello event
+      ansible.builtin.debug:
+        msg: 'Hello event {{ ansible_eda.event }}'
+
+    - name: Debug Hello facts
+      ansible.builtin.debug:
+        msg: 'Hello facts {{ ansible_eda.facts }}'
+...
