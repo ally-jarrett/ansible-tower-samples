@@ -9,10 +9,10 @@
         group_id: ansible-eda
   rules:
     - name: kafka
-      condition: event.payload is defined
+      condition: message is defined
       action:
         debug: 
-          var: event
-        run_job_template:
-          name: EDA Hello World
-          organization: Default
+          var: event.body.message
+        # run_job_template:
+        #   name: EDA Hello World
+        #   organization: Default
