@@ -17,8 +17,6 @@
         run_job_template:
           name: EDA Hello World
           organization: Default
-        debug: 
-          var: event.body.message
     - name: webhook
       condition: event.body.message is defined
       action:

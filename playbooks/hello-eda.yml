@@ -2,6 +2,6 @@
   hosts: all
   tasks:
     - debug:
-        msg: "you have send the following message "{{ message }}""
+        msg: "you have send the following message {{ ansible_eda.event.body }}"
     - debug:
         var: event.body.message
