@@ -1,9 +1,7 @@
 - name: hello
   hosts: all
+  gather_facts: false
   tasks:
-    - name: Display all variables/facts known for a host
+    - name: Print Vars
       debug:
-        var: vars
-    # - name: Print Vars
-    #   debug:
-    #     msg: "you have send the following event: '{{ansible_eda.event}}'"
+        msg: "you have send the following event: '{{ansible_eda.event}}'"
