@@ -1,6 +1,6 @@
 ---
 - name: Hello Kafka Event
-  hosts: all
+  hosts: localhost
   sources:
     - ansible.eda.kafka:
         host: automation-streams-kafka-bootstrap.skylight.svc.cluster.local
