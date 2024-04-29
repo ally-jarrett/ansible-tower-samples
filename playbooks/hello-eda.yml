@@ -1,6 +1,10 @@
 - name: hello
   hosts: all
   tasks:
-    - name: Print Vars
+    - name: Display all variables/facts known for a host
       debug:
-        msg: "you have send the following event: '{{ansible_eda.event}}'"
+        var: hostvars[inventory_hostname]
+      tags: debug_info
+    # - name: Print Vars
+    #   debug:
+    #     msg: "you have send the following event: '{{ansible_eda.event}}'"
