@@ -12,3 +12,7 @@
         kind: Pod
         namespace: "{{ ns }}"
       register: pod_list
+
+    - name: Print Pod List
+        debug: 
+          var: pod_list
