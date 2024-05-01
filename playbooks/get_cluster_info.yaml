@@ -2,15 +2,16 @@
   hosts: localhost
   gather_facts: false
   connection: local
-  vars:
-    ns: 'skylight'
 
   tasks:
+    - debug:
+        msg: 'Retreiving Pod List for: {{ ansible_eda.event.namespace }}'
+
     - name: Get a list of all Pods in NS
       kubernetes.core.k8s_info:
         validate_certs: no
         kind: Pod
-        namespace: "{{ ns }}"
+        namespace: "{{ ansible_eda.event .namespace }}"
       register: pod_list
 
     - debug:
