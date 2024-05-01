@@ -5,13 +5,13 @@
 
   tasks:
     - debug:
-        msg: 'Retreiving Pod List for: {{ ansible_eda.event.namespace }}'
+        msg: 'Retreiving Pod List for: {{ ansible_eda.event }}'
 
     - name: Get a list of all Pods in NS
       kubernetes.core.k8s_info:
         validate_certs: no
         kind: Pod
-        namespace: "{{ ansible_eda.event .namespace }}"
+        namespace: "{{ ansible_eda.event.body.namespace }}"
       register: pod_list
 
     - debug:
