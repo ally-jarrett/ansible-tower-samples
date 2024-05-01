@@ -13,6 +13,8 @@
         namespace: "{{ ns }}"
       register: pod_list
 
-    - name: Print Pod List
-        debug: 
-          var: pod_list
+    - debug:
+        msg: "{{ item.metadata.name }} {{ item.metadata.namespace }}"
+      loop: "{{ pod_list.resources }}"
+      loop_control:
+        label: "{{ item.metadata.name }}"
