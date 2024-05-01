@@ -8,7 +8,6 @@
   tasks:
     - name: Get a list of all Pods in NS
       kubernetes.core.k8s_info:
-        api_key: "AAP Service Account"
         validate_certs: no
         kind: Pod
         namespace: "{{ ns }}"
