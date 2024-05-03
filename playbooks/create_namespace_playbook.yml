@@ -39,3 +39,12 @@
 
     - debug:
         msg: "{{ k8s_namespace }}"
+
+    - name: Describe ResourceQuota for NameSpace  
+      kubernetes.core.k8s_info:
+        kind: ResourceQuota
+        namespace: "{{ ns }}"
+      register: k8s_quota
+
+    - debug:
+        msg: "{{ k8s_quota }}"
