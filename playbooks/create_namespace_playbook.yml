@@ -9,9 +9,6 @@
     limits_memory: '10Gi'
 
   tasks:
-    - debug:
-      msg: 'Running Event Request: {{ ansible_eda.body.action }} with the payload request: {{ ansible_eda.event.body }}'
-    
     - name: Create Namespace
       kubernetes.core.k8s:
         api_version: v1
