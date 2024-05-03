@@ -5,7 +5,7 @@
 
   tasks:
     - debug:
-        msg: 'Retreiving Pod List for: {{ ansible_eda.event }}'
+        msg: 'Retreiving Pod List for: {{ ansible_eda.event.body.namespace }}'
 
     - name: Get a list of all Pods in NS
       kubernetes.core.k8s_info:

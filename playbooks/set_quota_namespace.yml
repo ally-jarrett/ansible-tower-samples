@@ -11,7 +11,6 @@
   tasks:
     - name: Set resource quotas
       kubernetes.core.k8s:
-        kubeconfig: "/opt/cedar/conf/auth/kubeconfig"
         api_version: v1
         kind: ResourceQuota
         namespace: "{{ ns }}"
@@ -24,4 +23,3 @@
               "limits.memory": "{{ limits_memory }}"
               "requests.cpu": "{{ requests_cpu }}"
               "requests.memory": "{{ requests_memory }}"
-      delegate_to: ignite.demolab.local
