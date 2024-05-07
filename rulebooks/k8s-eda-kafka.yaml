@@ -10,7 +10,7 @@
 
   rules:
     - name: kafka
-      condition: event.message is defined
+      condition: message is defined
       action:
         run_job_template:
           name: Test-Template
