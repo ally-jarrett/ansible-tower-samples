@@ -10,8 +10,7 @@
 
   rules:
     - name: kafka
-      condition: 
-        all: message is defined
+      condition: request == "TEST"
       action:
         run_job_template:
           name: Test-Template

@@ -5,6 +5,7 @@
 {
 	"message" : "TEST",
     "namespace": {
+        "name" : "barclays"
         "limits_cpu" : "1",
         "limits_memory" : "1",
         "request_cpu" : "1Gi",
