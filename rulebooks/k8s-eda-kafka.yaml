@@ -12,7 +12,8 @@
     - name: kafka
       condition:
         all:
-          - request.type is defined and request.type != ""
+          - event.request.type is defined
+          - event.request.type != ""
       action:
         run_job_template:
           name: Test-Template
