@@ -10,9 +10,7 @@
 
   rules:
     - name: kafka
-      condition:
-        all:
-          - requestType is defined and requestType == "TEST"
+      condition: requestType is defined and requestType == "TEST"
       action:
         run_job_template:
           name: Test-Template
