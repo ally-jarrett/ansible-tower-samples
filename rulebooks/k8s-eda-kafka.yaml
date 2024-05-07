@@ -10,10 +10,10 @@
 
   rules:
     - name: kafka
-      condition: action == "TEST"
+      condition: action is define and action != ""
       action:
         run_job_template:
-          name: Test Template
+          name: Test-Template
           organization: Default
 
 
