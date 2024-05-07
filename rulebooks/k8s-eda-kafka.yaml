@@ -11,9 +11,7 @@
   rules:
     - name: kafka
       condition: 
-        all: 
-          - message is defined
-          - namespace is defined
+        all: message is defined and message == "test"
       action:
         run_job_template:
           name: Test-Template
