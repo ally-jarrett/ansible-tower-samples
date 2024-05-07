@@ -9,17 +9,13 @@
     limits_memory: '1Gi'
 
   tasks:
-  
+
     - name: Create Namespace
       kubernetes.core.k8s:
         api_version: v1
         kind: Namespace
         name: "{{ ns }}"
         state: present
-        wait: yes
-        wait_timeout: 60
-        wait_condition:
-          status: Active
 
     - name: Set Initial Resource Quota
       kubernetes.core.k8s:
