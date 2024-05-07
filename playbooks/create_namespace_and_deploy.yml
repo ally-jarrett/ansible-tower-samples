@@ -37,13 +37,14 @@
         state: present
         definition:
           apiVersion: v1
-          kind: Pod
+          kind: Deployment
           metadata:
-            name: "utilitypod-1"
+            name: "utilitypod"
             namespace: "{{ ansible_eda.body.namespace.name }}"
             labels:
               app: quota-test
           spec:
+            replicas: 1
             containers:
             - name: utilitypod
               image: busybox

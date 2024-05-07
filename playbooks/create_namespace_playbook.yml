@@ -2,19 +2,24 @@
   hosts: localhost
   gather_facts: no
   vars:
-    ns: 'test'
-    requests_cpu: '2'
-    limits_cpu: '3'
-    requests_memory: '5Gi'
-    limits_memory: '10Gi'
+    ns: 'buk_ns'
+    requests_cpu: '1'
+    limits_cpu: '1'
+    requests_memory: '1Gi'
+    limits_memory: '1Gi'
 
   tasks:
+  
     - name: Create Namespace
       kubernetes.core.k8s:
         api_version: v1
         kind: Namespace
         name: "{{ ns }}"
         state: present
+        wait: yes
+        wait_timeout: 60
+        wait_condition:
+          status: Active
 
     - name: Set Initial Resource Quota
       kubernetes.core.k8s:
@@ -30,21 +35,25 @@
               "limits.memory": "{{ limits_memory }}"
               "requests.cpu": "{{ requests_cpu }}"
               "requests.memory": "{{ requests_memory }}"
-    
-    - name: Describe Namespace 
-      kubernetes.core.k8s_info:
-        kind: Namespace
-        namespace: "{{ ns }}"
-      register: k8s_namespace
 
-    - debug:
-        msg: "{{ k8s_namespace }}"
-
-    - name: Describe ResourceQuota for NameSpace  
-      kubernetes.core.k8s_info:
-        kind: ResourceQuota
-        namespace: "{{ ns }}"
-      register: k8s_quota
-
-    - debug:
-        msg: "{{ k8s_quota }}"
+    - name: Create a Deployment with 1 replica
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Deployment
+          metadata:
+            name: "utilitypod"
+            namespace: "{{ ns }}"
+            labels:
+              app: quota-test
+          spec:
+            replicas: 1
+            containers:
+            - name: utilitypod
+              image: busybox
+              resources:
+                "limits.cpu": "{{ limits_cpu }}"
+                "limits.memory": "{{ limits_memory }}"
+                "requests.cpu": "{{ requests_cpu }}"
+                "requests.memory": "{{ requests_memory }}"
