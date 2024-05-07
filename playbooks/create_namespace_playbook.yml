@@ -47,11 +47,11 @@
             replicas: 1
             selector:
               matchLabels:
-              app: "utilitypod"
+                "app": "utilitypod"
             template:
               metadata:
                 labels:
-                  app: "utilitypod"
+                  "app": "utilitypod"
               spec: 
                 containers:
                 - name: "utilitypod"
