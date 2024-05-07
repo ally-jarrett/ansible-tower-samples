@@ -57,10 +57,10 @@
                 - name: "utilitypod"
                   image: "busybox"
                   resources:
-                    "limits.cpu": "{{ limits_cpu }}"
-                    "limits.memory": "{{ limits_memory }}"
-                    "requests.cpu": "{{ requests_cpu }}"
                     "requests.memory": "{{ requests_memory }}"
+                    "requests.cpu": "{{ requests_cpu }}"
+                    "limits.memory": "{{ limits_memory }}"
+                    "limits.cpu": "{{ limits_cpu }}"
                   command:
                     - "sleep"
                     - "3600"
