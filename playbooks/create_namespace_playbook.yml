@@ -56,11 +56,13 @@
                 containers:
                 - name: "utilitypod"
                   image: "busybox"
-                  resources:
-                    "requests.memory": "{{ requests_memory }}"
-                    "requests.cpu": "{{ requests_cpu }}"
-                    "limits.memory": "{{ limits_memory }}"
-                    "limits.cpu": "{{ limits_cpu }}"
+                  resources: 
+                    requests:
+                      memory: "{{ requests_memory }}"
+                      cpu: "{{ requests_cpu }}"
+                    limits:
+                      memory: "{{ limits_memory }}"
+                      cpu: "{{ limits_cpu }}"
                   command:
                     - "sleep"
                     - "3600"
