@@ -36,7 +36,7 @@
       kubernetes.core.k8s:
         state: present
         definition:
-          apiVersion: v1
+          apiVersion: apps/v1
           kind: Deployment
           metadata:
             name: "utilitypod"
@@ -45,11 +45,24 @@
               app: quota-test
           spec:
             replicas: 1
-            containers:
-            - name: utilitypod
-              image: busybox
-              resources:
-                "limits.cpu": "{{ limits_cpu }}"
-                "limits.memory": "{{ limits_memory }}"
-                "requests.cpu": "{{ requests_cpu }}"
-                "requests.memory": "{{ requests_memory }}"
+            selector:
+              matchLabels:
+              app: "utilitypod"
+            template:
+              metadata:
+                labels:
+                  app: "utilitypod"
+              spec: 
+                containers:
+                - name: "utilitypod"
+                  image: "busybox"
+                  resources:
+                    "limits.cpu": "{{ limits_cpu }}"
+                    "limits.memory": "{{ limits_memory }}"
+                    "requests.cpu": "{{ requests_cpu }}"
+                    "requests.memory": "{{ requests_memory }}"
+                  command:
+                    - "sleep"
+                    - "3600"
+                    
+           
