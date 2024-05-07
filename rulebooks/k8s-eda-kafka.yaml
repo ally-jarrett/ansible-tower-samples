@@ -10,7 +10,9 @@
 
   rules:
     - name: kafka
-      condition: message is defined and message != ""
+      condition:
+        all:
+          - BCP_ACTION is defined and BCP_ACTION != ""
       action:
         run_job_template:
           name: Test-Template
