@@ -12,8 +12,7 @@
     - name: kafka
       condition:
         all:
-          - BCP_ACTION is defined
-          - BCP_ACTION != ""
+          - request.type is defined and request.type != ""
       action:
         run_job_template:
           name: Test-Template
