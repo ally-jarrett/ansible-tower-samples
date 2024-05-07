@@ -11,7 +11,7 @@
   rules:
     - name: kafka
       condition: 
-        all: message is defined and message == "test"
+        all: message is defined
       action:
         run_job_template:
           name: Test-Template
