@@ -2,7 +2,7 @@
   hosts: localhost
   gather_facts: no
   vars:
-    ns: 'buk_ns'
+    ns: 'testing'
     requests_cpu: '1'
     limits_cpu: '1'
     requests_memory: '1Gi'
