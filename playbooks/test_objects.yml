@@ -1,0 +1,22 @@
+---
+- name: Test Objects 
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Event
+      ansible.builtin.debug:
+        msg: 'Hello event {{ ansible_eda.event }}'
+
+    - name: Field
+      ansible.builtin.debug:
+        msg: 'Hello event {{ ansible_eda.event.body.action }}'
+
+    - name: Object
+      ansible.builtin.debug:
+        msg: 'Hello event {{ ansible_eda.event.body.namespace }}'
+
+    - name: Object Field
+      ansible.builtin.debug:
+        msg: 'Hello event {{ ansible_eda.event.body.namespace.limits_cpu }}'
+
+...

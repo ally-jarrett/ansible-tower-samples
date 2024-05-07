@@ -1,22 +1,16 @@
 - name: Set resource quotas for a Kubernetes cluster for a namespace
   hosts: localhost
   gather_facts: no
-  vars:
-    ns: 'test'
-    requests_cpu: '2'
-    limits_cpu: '3'
-    requests_memory: '5Gi'
-    limits_memory: '10Gi'
 
   tasks:
     - debug:
-      msg: 'Running Event Request: {{ ansible_eda.body.action }} with the payload request: {{ ansible_eda.event.body }}'
+      msg: 'Running Event Request: {{ ansible_eda.event.body.action }} with the payload request: {{ ansible_eda.event.body }}'
     
     - name: Create Namespace
       kubernetes.core.k8s:
         api_version: v1
         kind: Namespace
-        name: "{{ ansible_eda.body.namespace.name }}"
+        name: "{{ ansible_eda.event.body.namespace.name }}"
         state: present
         wait: yes
         wait_timeout: 60
@@ -37,3 +31,25 @@
               "limits.memory": "{{ ansible_eda.event.body.namespace.limits_memory }}"
               "requests.cpu": "{{ ansible_eda.event.body.namespace.requests_cpu }}"
               "requests.memory": "{{ ansible_eda.event.body.namespace.requests_memory }}"
+
+    - name: Create a Pod maxing limits 
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Pod
+          metadata:
+            name: "utilitypod-1"
+            namespace: "{{ ansible_eda.body.namespace.name }}"
+            labels:
+              app: quota-test
+          spec:
+            containers:
+            - name: utilitypod
+              image: busybox
+              resources:
+                "limits.cpu": "{{ ansible_eda.event.body.namespace.limits_cpu }}"
+                "limits.memory": "{{ ansible_eda.event.body.namespace.limits_memory }}"
+                "requests.cpu": "{{ ansible_eda.event.body.namespace.requests_cpu }}"
+                "requests.memory": "{{ ansible_eda.event.body.namespace.requests_memory }}"
+

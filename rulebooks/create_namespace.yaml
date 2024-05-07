@@ -1,5 +1,5 @@
 ---
-- name: K8s Kafka Event
+- name: Hello Kafka Event
   hosts: localhost
   sources:
     - ansible.eda.kafka:
@@ -12,11 +12,11 @@
     - name: kafka
       condition: 
         all:
-          - action == "TEST"
+          - action == "NAMESPACE_CREATE"
           - namespace is defined and namespace != ""
       action:
         run_job_template:
-          name: Test Template
+          name: EDA Hello World
           organization: Default
 
 
