@@ -9,7 +9,7 @@
 
     - name: Field
       ansible.builtin.debug:
-        msg: 'Hello event {{ ansible_eda.event.body.message }}'
+        msg: 'Hello event {{ ansible_eda.event.body.request.type }}'
 
     - name: Object
       ansible.builtin.debug:
