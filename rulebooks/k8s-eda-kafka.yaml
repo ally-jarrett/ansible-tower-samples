@@ -15,6 +15,7 @@
           - event.body.request is defined
           - event.body.request == "test"
       action:
-        run_job_template:
-          name: EDA Hello World
-          organization: Default
+        debug:
+        # run_job_template:
+        #   name: EDA Hello World
+        #   organization: Default
