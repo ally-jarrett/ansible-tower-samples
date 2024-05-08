@@ -15,3 +15,10 @@
         run_job_template:
           name: K8s Namespace Template
           organization: Default
+
+    - name: kafka
+      condition: event.body.request.type is defined and event.body.request.type == "UPDATE_NAMESPACE_QUOTA"
+      action:
+        run_job_template:
+          name: K8s Quota Template
+          organization: Default
