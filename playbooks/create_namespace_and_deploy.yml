@@ -3,8 +3,9 @@
   gather_facts: no
 
   tasks:
-    - debug:
-      msg: 'Running Event Request: {{ ansible_eda.event.body.request.type }} with the payload request: {{ ansible_eda.event.body }}'
+    - name: Debug event
+      ansible.builtin.debug:
+        msg: 'Running Event Request: {{ ansible_eda.event.body.request.type }} with the payload request: {{ ansible_eda.event.body }}'
     
     - name: Create Namespace
       kubernetes.core.k8s:
