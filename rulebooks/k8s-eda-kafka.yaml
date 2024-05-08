@@ -12,7 +12,6 @@
     - name: kafka
       condition: event.body.request.type is defined and event.body.request.type == "CREATE_NAMESPACE"
       action:
-        debug:
-        # run_job_template:
-        #   name: EDA Hello World
-        #   organization: Default
+        run_job_template:
+          name: K8s Namespace Template
+          organization: Default
