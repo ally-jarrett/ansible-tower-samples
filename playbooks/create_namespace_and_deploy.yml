@@ -1,4 +1,4 @@
-- name: Set resource quotas for a Kubernetes cluster for a namespace
+- name: Create new Namespace for OCP cluster 
   hosts: localhost
   gather_facts: no
 
@@ -13,10 +13,6 @@
         kind: Namespace
         name: "{{ ansible_eda.event.body.namespace.name }}"
         state: present
-        wait: yes
-        wait_timeout: 60
-        wait_condition:
-          status: Active
 
     - name: Set Initial Resource Quota
       kubernetes.core.k8s:
