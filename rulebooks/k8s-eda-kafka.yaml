@@ -10,10 +10,7 @@
 
   rules:
     - name: kafka
-      condition: 
-        all:
-          - event.body.request is defined
-          - event.body.request == "test"
+      condition: event.body.request.type is defined and event.body.request.type == "CREATE_NAMESPACE"
       action:
         debug:
         # run_job_template:
