@@ -11,7 +11,7 @@
   rules:
     - name: kafka
       condition: 
-        any:
+        all:
           - event.body.request is defined
           - event.body.request == "test"
       action:
