@@ -10,8 +10,8 @@
 
   rules:
     - name: kafka
-      condition: request == "TEST"
+      condition: request is defined
       action:
         run_job_template:
-          name: Test-Template
+          name: EDA Hello World
           organization: Default

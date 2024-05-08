@@ -1,7 +1,8 @@
 ---
 - name: Debug Hello event and facts
   hosts: all
-  gather_facts: false
+  gather_facts: true
+
   tasks:
     - name: Debug Hello event
       ansible.builtin.debug:
